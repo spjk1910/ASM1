@@ -13,4 +13,14 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Background"><item name= "android:background">#141c3d</item></style>
+    <style name="Text"><item name= "android:textColor">#ffffff</item></style>
+
+    <!-- Button style -->
+    <style name="Widget.ASM1.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/button_state_dark</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
