@@ -1,79 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141c3b">
+    android:gravity="center"
+    android:animateLayoutChanges="true"
+    android:background="@color/dark_bg"
+    android:orientation="vertical"
+    tools:context=".WelcomeScreen">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="4dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/app_icon" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tech Tease"
+        android:textColor="@color/dark_text"
+        android:fontFamily="@font/SVN_GothamBlack"
+        android:gravity="center"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quiz Bot"
+        android:textColor="@color/dark_text"
+        android:fontFamily="@font/SVN_GothamBlack"
+        android:gravity="center"
+        android:textSize="36sp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:gravity="center"
+        android:layout_marginTop="16dp">
 
-        <!-- App Icon with Grey Circle -->
-        <ImageView
-            android:id="@+id/app_icon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="20dp"
-            android:background="#74758d"
-            android:src="@android:color/transparent" />
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="START"
+            android:fontFamily="@font/Roboto_Regular"
+            android:gravity="center"
+            android:backgroundTint="@color/dark_button"
+            android:textColor="@android:color/white"
+            android:cornerRadius="20dp"
+            android:padding="12dp" />
 
-        <!-- App Name: Teach Tease -->
-        <TextView
-            android:id="@+id/app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Teach Tease"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
+        <Button
+            android:id="@+id/settingButton"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="SETTING"
+            android:fontFamily="@font/Roboto_Regular"
+            android:gravity="center"
+            android:backgroundTint="@color/dark_button"
+            android:textColor="@android:color/white"
+            android:cornerRadius="20dp"
+            android:padding="12dp" />
 
-        <!-- App Name: QuizBot -->
-        <TextView
-            android:id="@+id/app_name2"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_marginTop="0dp"
-            android:text="QuizBot"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp" />
+        <Button
+            android:id="@+id/quitButton"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="QUIT"
+            android:fontFamily="@font/Roboto_Regular"
+            android:gravity="center"
+            android:backgroundTint="@color/dark_button"
+            android:textColor="@android:color/white"
+            android:cornerRadius="20dp"
+            android:padding="12dp" />
 
-        <!-- Buttons Section -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"> <!-- Gap between QuizBot and buttons -->
-
-            <Button
-                android:id="@+id/buttonStart"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#74758d"
-                android:text="Start" />
-
-            <Button
-                android:id="@+id/buttonSetting"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#74758d"
-                android:text="Setting" />
-
-            <Button
-                android:id="@+id/buttonQuit"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#74758d"
-                android:text="Quit" />
-        </LinearLayout>
     </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>
