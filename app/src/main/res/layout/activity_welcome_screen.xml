@@ -11,32 +11,37 @@
     android:orientation="vertical"
     tools:context=".WelcomeScreen">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="4dp">
+    <FrameLayout
+        android:id="@+id/app_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/rounded_logo"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/app_icon" />
-    </androidx.cardview.widget.CardView>
+            android:src="@drawable/app_icon_image"
+            app:riv_border_color="#ffffff"
+            app:riv_border_width="2dp"
+            app:riv_oval="true" />
+
+    </FrameLayout>
 
     <TextView
+        android:id="@+id/app_name1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tech Tease"
-        android:textColor="@color/dark_text"
         android:fontFamily="@font/SVN_GothamBlack"
         android:gravity="center"
-        android:textSize="24sp"/>
+        android:text="Tech Tease"
+        android:textColor="@color/dark_text"
+        android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/app_name2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Quiz Bot"
