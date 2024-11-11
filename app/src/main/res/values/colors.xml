@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dark_bg">#110327</color>
-    <color name="dark_text">#f4f5fc</color>
-    <color name="dark_button">#633cf1</color>
-    <color name="light_bg">#ffffff</color>
+    <color name="dark_bg_secondary">#220A4B</color>
+    <color name="dark_middle_bg">#DDDDDD</color>
+    <color name="dark_text">#F4F5FC</color>
+    <color name="dark_button">#633CF1</color>
+    <color name="light_bg">#FFF9C2</color>
+    <color name="light_bg_secondary">#220A4B</color>
+    <color name="light_middle_bg">#FFFFFF</color>
     <color name="light_text">#111111</color>
     <color name="light_button">#573826</color>
 </resources>
