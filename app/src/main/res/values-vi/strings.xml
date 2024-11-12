@@ -1,0 +1,9 @@
+<resources>
+    <string name="title_setting">Cài Đặt</string>
+    <string name="languageLabel">Ngôn Ngữ</string>
+    <string name="themeLabel">Nền</string>
+    <string name="musicLabel">Nhạc Nền</string>
+    <string name="back">&#60; Quay Lại</string>
+    <string name="start">Bắt Đầu</string>
+    <string name="exit">"Thoát Game "</string>
+</resources>

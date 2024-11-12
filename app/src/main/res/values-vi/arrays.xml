@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themeChosen">
+        <item>Tối</item>
+        <item>Sáng</item>
+    </string-array>
+    <string-array name="themeDescription">
+        <item>Bạn đang chọn\n nền Tối</item>
+        <item>Bạn đang chọn\n nền Sáng</item>
+    </string-array>
+    <string-array name="musicChosen">
+        <item>Mở</item>
+        <item>Tắt</item>
+    </string-array>
+    <string-array name="musicDescription">
+        <item>Nhạc nền đang Mở</item>
+        <item>Nhạc nền đang Tắt</item>
+    </string-array>
+    <string-array name="languageChosen">
+        <item>Tiếng Anh</item>
+        <item>Tiếng Việt</item>
+    </string-array>
+    <string-array name="languageDescription">
+        <item>Ngôn ngữ hiện tại\nlà Tiếng Anh</item>
+        <item>Ngôn ngữ hiện tại\nlà Tiếng Việt</item>
+    </string-array>
+</resources>
