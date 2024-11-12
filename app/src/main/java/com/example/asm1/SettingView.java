@@ -11,6 +11,7 @@
     import android.widget.TextView;
 
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.appcompat.app.AppCompatDelegate;
 
     import java.util.Locale;
     import java.util.Objects;
@@ -111,6 +112,12 @@
             SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
             prefs.edit().putInt(THEME_KEY, themeIndex).apply();
             updateThemeDisplay();
+
+            if (themeIndex == 1) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
         }
 
         private void updateMusic(int i) {

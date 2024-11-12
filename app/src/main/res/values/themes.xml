@@ -1,6 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ASM1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-
+    <style name="Theme.ASM1" parent="Theme.MaterialComponents.DayNight.DarkActionBar"></style>
+    <style name="bg_colour"><item name="android:background">@color/light_bg</item></style>
+    <style name="text"><item name="android:textColor">@color/light_text</item></style>
+    <style name="textSecondary"><item name="android:textColor">@color/light_text_secondary</item></style>
+    <style name="chevron"><item name="android:tint">@color/light_text</item></style>
+    <style name="bg_button"><item name="android:background">@color/light_button</item></style>
+    <style name="ButtonStyle" parent="bg_button">
+        <item name="android:textColor">@color/light_text</item>
     </style>
 </resources>
