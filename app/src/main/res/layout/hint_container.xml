@@ -19,7 +19,7 @@
         android:id="@+id/hintMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/Roboto_Regular"
+        android:fontFamily="@font/roboto_regular"
         android:layout_marginStart="@dimen/_4sdp"
         android:layout_marginLeft="@dimen/_4sdp"
         android:background="@drawable/background_guess_container"

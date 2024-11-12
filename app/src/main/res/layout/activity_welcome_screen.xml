@@ -34,7 +34,7 @@
         android:id="@+id/app_name1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/SVN_GothamBlack"
+        android:fontFamily="@font/svn_gothamblack"
         android:gravity="center"
         android:text="Tech Tease"
         android:textColor="@color/dark_text"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Quiz Bot"
         android:textColor="@color/dark_text"
-        android:fontFamily="@font/SVN_GothamBlack"
+        android:fontFamily="@font/svn_gothamblack"
         android:gravity="center"
         android:textSize="36sp"/>
 
@@ -61,37 +61,40 @@
             android:id="@+id/startButton"
             android:layout_width="250dp"
             android:layout_height="70dp"
-            android:text="START"
-            android:fontFamily="@font/Roboto_Regular"
+            android:text="@string/start"
+            android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:backgroundTint="@color/dark_button"
             android:textColor="@android:color/white"
-            android:cornerRadius="20dp"
-            android:padding="12dp" />
+            android:radius="20dp"
+            android:padding="12dp"
+            android:textAllCaps="true"/>
 
         <Button
             android:id="@+id/settingButton"
             android:layout_width="250dp"
             android:layout_height="70dp"
-            android:text="SETTING"
-            android:fontFamily="@font/Roboto_Regular"
+            android:text="@string/title_setting"
+            android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:backgroundTint="@color/dark_button"
             android:textColor="@android:color/white"
-            android:cornerRadius="20dp"
-            android:padding="12dp" />
+            android:radius="20dp"
+            android:padding="12dp"
+            android:textAllCaps="true"/>
 
         <Button
             android:id="@+id/quitButton"
             android:layout_width="250dp"
             android:layout_height="70dp"
-            android:text="QUIT"
-            android:fontFamily="@font/Roboto_Regular"
+            android:text="@string/exit"
+            android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:backgroundTint="@color/dark_button"
             android:textColor="@android:color/white"
-            android:cornerRadius="20dp"
-            android:padding="12dp" />
+            android:radius="20dp"
+            android:padding="12dp"
+            android:textAllCaps="true"/>
 
     </LinearLayout>
 </LinearLayout>

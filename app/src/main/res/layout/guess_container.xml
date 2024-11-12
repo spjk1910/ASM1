@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_guess_container"
-        android:fontFamily="@font/Roboto_Regular"
+        android:fontFamily="@font/roboto_regular"
         android:padding="@dimen/_12sdp"
         android:textColor="@color/dark_text"
         android:textSize="@dimen/_13ssp"

@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">ASM1</string>
+    <string name="app_name" translatable="false">Tech Quiz</string>
+    <string name="title_setting">Setting</string>
+    <string name="languageLabel">Language</string>
+    <string name="themeLabel">Theme</string>
+    <string name="musicLabel">Music</string>
+    <string name="back">&#60; Back</string>
+    <string name="start">Start Game</string>
+    <string name="exit">Quit App</string>
 </resources>

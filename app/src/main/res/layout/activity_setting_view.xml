@@ -16,10 +16,11 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="< Back"
+        android:text="@string/back"
+        android:background="@color/dark_bg"
         android:textSize="18sp"
         android:textColor="#F8FAE5"
-        android:fontFamily="@font/Roboto_Regular"
+        android:fontFamily="@font/roboto_regular"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
         android:padding="16dp"
@@ -35,10 +36,10 @@
         android:id="@+id/titleSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Setting"
+        android:text="@string/title_setting"
         android:textSize="24sp"
         android:textColor="#F8FAE5"
-        android:fontFamily="@font/SVN_GothamBlack"
+        android:fontFamily="@font/svn_gothamblack"
         android:layout_gravity="center"
         android:layout_marginBottom="32dp" />
 
@@ -53,8 +54,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/Roboto_Regular"
-            android:text="Language"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/languageLabel"
             android:textColor="#F8FAE5"
             android:textSize="18sp" />
 
@@ -73,20 +74,22 @@
             android:gravity="center_horizontal">
 
             <TextView
+                android:id="@+id/languageChoose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="English"
+                android:text="@array/languageChosen"
                 android:textColor="#F8FAE5"
-                android:fontFamily="@font/Roboto_Regular" />
+                android:fontFamily="@font/roboto_regular" />
 
             <TextView
+                android:id="@+id/languageDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose your preferred\nlanguage"
+                android:text="@array/languageDescription"
                 android:gravity="center"
                 android:textColor="#B19470"
                 android:textSize="12sp"
-                android:fontFamily="@font/Roboto_Regular" />
+                android:fontFamily="@font/roboto_regular" />
         </LinearLayout>
 
         <ImageView
@@ -108,10 +111,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Theme"
+            android:text="@string/themeLabel"
             android:textColor="#F8FAE5"
             android:textSize="18sp"
-            android:fontFamily="@font/Roboto_Regular" />
+            android:fontFamily="@font/roboto_regular" />
 
         <ImageView
             android:id="@+id/chevronLeftTheme"
@@ -128,20 +131,22 @@
             android:gravity="center_horizontal">
 
             <TextView
+                android:id="@+id/themeChoose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dark"
+                android:text="@array/themeChosen"
                 android:textColor="#F8FAE5"
-                android:fontFamily="@font/Roboto_Regular" />
+                android:fontFamily="@font/roboto_regular" />
 
             <TextView
+                android:id="@+id/themeDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose your preferred\ntheme"
+                android:text="@array/themeDescription"
                 android:gravity="center"
                 android:textColor="#B19470"
                 android:textSize="12sp"
-                android:fontFamily="@font/Roboto_Regular" />
+                android:fontFamily="@font/roboto_regular" />
         </LinearLayout>
 
         <ImageView
@@ -159,17 +164,17 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:id="@+id/music"
+            android:id="@+id/musicLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/Roboto_Regular"
-            android:text="Music"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/musicLabel"
             android:textColor="#F8FAE5"
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/chevronLeftDifficulty"
+            android:id="@+id/chevronLeftMusic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_chevron_left_24"
@@ -183,23 +188,25 @@
             android:gravity="center_horizontal">
 
             <TextView
+                android:id="@+id/musicChoose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/Roboto_Regular"
-                android:text="On"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@array/musicChosen"
                 android:textColor="#F8FAE5" />
 
             <TextView
+                android:id="@+id/musicDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/Roboto_Regular"
-                android:text="Music is on"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@array/musicDescription"
                 android:textColor="#B19470"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/chevronRightDifficulty"
+            android:id="@+id/chevronRightMusic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_chevron_right_24"

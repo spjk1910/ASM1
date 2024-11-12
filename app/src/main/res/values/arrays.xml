@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themeChosen">
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+    <string-array name="themeDescription">
+        <item>You choose Dark Mode</item>
+        <item>You choose Light Mode</item>
+    </string-array>
+    <string-array name="musicChosen">
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="musicDescription">
+        <item>Background music is On</item>
+        <item>Background music is Off</item>
+    </string-array>
+    <string-array name="languageChosen">
+        <item>English</item>
+        <item>Vietnamese</item>
+    </string-array>
+    <string-array name="languageDescription">
+        <item>Current language is English</item>
+        <item>Current language is Vietnamese</item>
+    </string-array>
+</resources>
