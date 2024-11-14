@@ -34,7 +34,7 @@
         android:id="@+id/app_name1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/svn_gothamblack"
+        android:fontFamily="@font/svn_gotham"
         android:gravity="center"
         android:text="Tech Tease"
         style="@style/text"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Quiz Bot"
         style="@style/text"
-        android:fontFamily="@font/svn_gothamblack"
+        android:fontFamily="@font/svn_gotham"
         android:gravity="center"
         android:textSize="36sp"/>
 
@@ -57,41 +57,54 @@
         android:gravity="center"
         android:layout_marginTop="16dp">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startButton"
             android:layout_width="250dp"
             android:layout_height="70dp"
             android:text="@string/start"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
-            android:shape="rectangle"
-            android:radius="50+dp"
-            android:padding="20dp"
+            android:background="@drawable/rounded_button"
+            android:radius="50dp"
+            android:padding="12dp"
+            android:textColor="@color/text_button"
             android:textAllCaps="true"/>
 
-        <Button
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/settingButton"
             android:layout_width="250dp"
             android:layout_height="70dp"
-            android:text="@string/title_setting"
+            android:background="@drawable/rounded_button"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
-            style="@style/ButtonStyle"
-            android:radius="20dp"
             android:padding="12dp"
-            android:textAllCaps="true"/>
+            android:radius="20dp"
+            android:text="@string/title_setting"
+            android:textAllCaps="true"
+            android:textColor="@color/text_button" />
 
-        <Button
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/quitButton"
             android:layout_width="250dp"
             android:layout_height="70dp"
             android:text="@string/exit"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
-            style="@style/ButtonStyle"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/text_button"
             android:radius="20dp"
             android:padding="12dp"
             android:textAllCaps="true"/>
 
     </LinearLayout>
+
 </LinearLayout>

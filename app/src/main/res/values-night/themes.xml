@@ -5,8 +5,4 @@
     <style name="text"><item name="android:textColor">@color/dark_text</item></style>
     <style name="textSecondary"><item name="android:textColor">@color/dark_text_secondary</item></style>
     <style name="chevron"><item name="android:tint">@color/dark_text</item></style>
-    <style name="bg_button"><item name="android:background">@color/dark_button</item></style>
-    <style name="ButtonStyle" parent="bg_button">
-        <item name="android:textColor">@color/dark_text</item>
-    </style>
 </resources>

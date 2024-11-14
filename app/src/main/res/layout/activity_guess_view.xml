@@ -61,7 +61,7 @@
         android:textColor="@color/dark_text"
         android:text="Tech Tease Quiz Bot"
         android:textSize="@dimen/_14ssp"
-        android:fontFamily="@font/svn_gothamblack"
+        android:fontFamily="@font/svn_gotham"
         app:layout_constraintBottom_toBottomOf="@id/backButton"
         app:layout_constraintStart_toEndOf="@id/backButton"
         app:layout_constraintTop_toTopOf="@+id/backButton"
