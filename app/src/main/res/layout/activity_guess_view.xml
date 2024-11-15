@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_bg"
+    style="@style/bg_colour"
     tools:context=".GuessView">
 
     <View
@@ -21,7 +21,7 @@
         android:id="@+id/headerBackground"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/dark_bg"
+        style="@style/bg_colour"
         app:layout_constraintBottom_toTopOf="@id/viewSupporter"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -36,7 +36,7 @@
         android:src="@drawable/baseline_chevron_left_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/dark_text"/>
+        style="@style/chevron"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/rightSide"
@@ -58,7 +58,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
-        android:textColor="@color/dark_text"
+        style="@style/text"
         android:text="Tech Tease Quiz Bot"
         android:textSize="@dimen/_14ssp"
         android:fontFamily="@font/svn_gotham"
@@ -82,6 +82,7 @@
         android:orientation="vertical"
         android:overScrollMode="never"
         android:padding="@dimen/_20sdp"
+        app:stackFromEnd="true"
         android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="@id/showingGuess"
@@ -99,13 +100,14 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/guessButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginLeft="@dimen/_4sdp"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/baseline_send_24"
-            app:tint="#ffffff"/>
+            style="@style/chevron" />
     </FrameLayout>
 
     <EditText
@@ -125,8 +127,7 @@
         android:inputType="text"
         android:paddingStart="@dimen/_16sdp"
         android:paddingEnd="@dimen/_16sdp"
-        android:textColor="@color/dark_text"
-        android:textColorHint="@color/dark_text"
+        style="@style/textWithHint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guessLayout"
         app:layout_constraintStart_toStartOf="parent"/>

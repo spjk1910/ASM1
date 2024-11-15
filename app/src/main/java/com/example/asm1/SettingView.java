@@ -19,11 +19,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class SettingView extends AppCompatActivity {
-    private static final String PREFS_NAME = "setting";
-    private static final String LANGUAGE_KEY = "language_index";
-    private static final String THEME_KEY = "theme_index";
-    private static final String MUSIC_KEY = "music_index";
-
     private TextView backButton;
     private TextView languageChoose, themeChoose, musicChoose;
     private TextView languageDescription, themeDescription, musicDescription;
@@ -55,10 +50,10 @@ public class SettingView extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         );
 
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        languageIndex = prefs.getInt(LANGUAGE_KEY, 0);
-        themeIndex = prefs.getInt(THEME_KEY, 0);
-        musicIndex = prefs.getInt(MUSIC_KEY, 0);
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        languageIndex = prefs.getInt(PrefKeyClass.getLanguageKey(), 0);
+        themeIndex = prefs.getInt(PrefKeyClass.getThemeKey(), 0);
+        musicIndex = prefs.getInt(PrefKeyClass.getMusicKey(), 0);
 
         setContentView(R.layout.activity_setting_view);
 
@@ -126,8 +121,8 @@ public class SettingView extends AppCompatActivity {
 
     private void updateTheme(int i) {
         themeIndex = (themeIndex + i + themes.length) % themes.length;
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().putInt(THEME_KEY, themeIndex).apply();
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        prefs.edit().putInt(PrefKeyClass.getThemeKey(), themeIndex).apply();
         updateThemeDisplay();
 
         if (themeIndex == 1) {
@@ -139,8 +134,8 @@ public class SettingView extends AppCompatActivity {
 
     private void updateMusic(int i) {
         musicIndex = (musicIndex + i + musics.length) % musics.length;
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().putInt(MUSIC_KEY, musicIndex).apply();
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        prefs.edit().putInt(PrefKeyClass.getMusicKey(), musicIndex).apply();
         updateMusicDisplay();
 
         if (musicIndex == 0) {
@@ -170,8 +165,8 @@ public class SettingView extends AppCompatActivity {
     private void updateLanguage(int i) {
         languageIndex = (languageIndex + i + languages.length) % languages.length;
 
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        prefs.edit().putInt(LANGUAGE_KEY, languageIndex).apply();
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        prefs.edit().putInt(PrefKeyClass.getLanguageKey(), languageIndex).apply();
         updateLanguageDisplay();
 
         if (languageIndex == 1) {
@@ -192,18 +187,6 @@ public class SettingView extends AppCompatActivity {
         Configuration configuration = resources.getConfiguration();
         configuration.setLocale(locale);
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-    }
-
-    public static String getPrefsName() {
-        return PREFS_NAME;
-    }
-
-    public static String getLanguageKey() {
-        return LANGUAGE_KEY;
-    }
-
-    public static String getMusicKey() {
-        return MUSIC_KEY;
     }
 
     @Override

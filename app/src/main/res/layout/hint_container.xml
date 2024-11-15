@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:padding="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -20,11 +22,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:layout_marginLeft="@dimen/_4sdp"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="@dimen/_8sdp"
+        app:layout_constraintWidth_max = "wrap"
         android:background="@drawable/background_guess_container"
         android:padding="@dimen/_12sdp"
-        android:textColor="@color/dark_text"
+       style="@style/text"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@+id/appIcon"
         app:layout_constraintTop_toTopOf="parent"

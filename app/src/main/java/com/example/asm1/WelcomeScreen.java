@@ -22,8 +22,8 @@ public class WelcomeScreen extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
-                    SharedPreferences prefs = getSharedPreferences(SettingView.getPrefsName(), MODE_PRIVATE);
-                    int languageIndex = prefs.getInt(SettingView.getLanguageKey(), 0);
+                    SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+                    int languageIndex = prefs.getInt(PrefKeyClass.getLanguageKey(), 0);
                     String languageCode = (languageIndex == 1) ? "vi" : "en";
                     setLocale(languageCode);
                     recreate();
@@ -44,11 +44,11 @@ public class WelcomeScreen extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         );
 
-        SharedPreferences prefs = getSharedPreferences(SettingView.getPrefsName(), MODE_PRIVATE);
-        int languageIndex = prefs.getInt(SettingView.getLanguageKey(), 0);
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        int languageIndex = prefs.getInt(PrefKeyClass.getLanguageKey(), 0);
         String languageCode = (languageIndex == 1) ? "vi" : "en";
         setLocale(languageCode);
-        int musicIndex = prefs.getInt(SettingView.getMusicKey(), 0);
+        int musicIndex = prefs.getInt(PrefKeyClass.getMusicKey(), 0);
         if (musicIndex == 0)
         {
           startBackgroundMusic();
@@ -59,6 +59,14 @@ public class WelcomeScreen extends AppCompatActivity {
         Button startButton = findViewById(R.id.startButton);
         Button settingButton = findViewById(R.id.settingButton);
         Button quitButton = findViewById(R.id.quitButton);
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent guessIntenT = new Intent(WelcomeScreen.this, GuessView.class);
+                startActivity(guessIntenT);
+            }
+        });
 
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,8 +130,8 @@ public class WelcomeScreen extends AppCompatActivity {
     public void onStart()
     {
         super.onStart();
-        SharedPreferences prefs = getSharedPreferences(SettingView.getPrefsName(), MODE_PRIVATE);
-        int musicIndex = prefs.getInt(SettingView.getMusicKey(), 0);
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        int musicIndex = prefs.getInt(PrefKeyClass.getMusicKey(), 0);
         if(musicIndex == 0)
         {
             startBackgroundMusic();

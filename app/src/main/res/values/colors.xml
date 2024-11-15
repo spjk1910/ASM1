@@ -5,8 +5,8 @@
     <color name="dark_middle_bg">#DDDDDD</color>
     <color name="dark_text">#FFFFFF</color>
     <color name="dark_text_secondary">#B19470</color>
-    <color name="light_bg">#D8D7D0A3</color>
-    <color name="light_bg_secondary">#A1A09B </color>
+    <color name="light_bg">#F5F2C4</color>
+    <color name="light_bg_secondary">#DED8CE</color>
     <color name="light_middle_bg">#FFFFFF</color>
     <color name="light_text">#111111</color>
     <color name="light_text_secondary">#964B00</color>
