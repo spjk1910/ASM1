@@ -137,5 +137,4 @@ public class WelcomeScreen extends AppCompatActivity {
             startBackgroundMusic();
         }
     }
-
 }

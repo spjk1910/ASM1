@@ -1,32 +1,31 @@
 package com.example.asm1;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class GuessView extends AppCompatActivity {
-    private ConstraintLayout botMessage;
+    MediaPlayer mediaPlayer;
+    private Adapter adapter;
     private RecyclerView chatView;
+    private List<String> container ;
     private EditText guessInput;
-    private Button guessButton;
+    private AppCompatImageView guessButton;
+    private AppCompatImageView backButton;
     private QuestionClass currentQuestion;
     private GuessGameClass game;
-    private ArrayList<String> bot = new ArrayList<>();
-    private int hintIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,41 +44,122 @@ public class GuessView extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
         int languageIndex = prefs.getInt(PrefKeyClass.getLanguageKey(), 0);
         String languageCode = (languageIndex == 1) ? "vi" : "en";
-
-        if (languageCode == "en")
+        int musicIndex = prefs.getInt(PrefKeyClass.getMusicKey(), 0);
+        if (musicIndex == 0)
         {
-            bot.add("Welcome to Tech Tease Quiz Bot!");
-            bot.add("I will give you 3 hints to help you guess");
-            bot.add("Try to guess the algorithm");
-        } else if(languageCode == "vi")
-        {
-            bot.add("Chào mừng đến với Tech Tease Quiz Bot!");
-            bot.add("Tôi sẽ cho bạn 3 gợi ý để đoán");
-            bot.add("Hãy cố gắng đoán xem thuật toán nào đang được nhắc đến");
+            startBackgroundMusic();
         }
 
         setContentView(R.layout.activity_guess_view);
 
+        chatView = findViewById(R.id.chatView);
+        guessButton = findViewById(R.id.guessButton);
+        guessInput = findViewById(R.id.guessInput);
+        backButton = findViewById(R.id.backButton);
+
+        container = new ArrayList<>();
+        if (languageCode == "en")
+        {
+            container.add("(Bot) Welcome to Tech Tease Quiz Bot!");
+            container.add("(Bot) I will give you 3 hints to help you guess");
+            container.add("(Bot) Try to guess the algorithm");
+        } else if(languageCode == "vi")
+        {
+            container.add("(Bot) Chào mừng đến với Tech Tease Quiz Bot!");
+            container.add("(Bot) Tôi sẽ cho bạn 3 gợi ý để đoán");
+            container.add("(Bot) Hãy cố gắng đoán xem thuật toán nào đang được nhắc đến");
+        }
+
+        adapter = new Adapter(container);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        chatView.setLayoutManager(layoutManager);
+        chatView.setAdapter(adapter);
+        chatView.smoothScrollToPosition(container.size() - 1);
+
+        game = new GuessGameClass();
+        game.startGame(languageCode);
+        currentQuestion = game.createQuestion();
+        new android.os.Handler().postDelayed(this::showQuestion, 2000);
+
+        guessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    String guess = guessInput.getText().toString().trim();
+
+                    if (guess.isEmpty()) {
+                        throw new IllegalArgumentException("Guess cannot be empty");
+                    }
+
+                    container.add(guess);
+                    adapter.notifyItemInserted(container.size() - 1);
+                    chatView.smoothScrollToPosition(container.size() - 1);
+
+                    boolean isCorrect = currentQuestion.checkAnswer(guess);
+                    if (isCorrect) {
+                        Toast.makeText(GuessView.this, "Correct!", Toast.LENGTH_SHORT).show();
+                        container.add("(Bot) Congratulations! You guessed correctly.");
+                        adapter.notifyItemInserted(container.size() - 1);
+                        chatView.smoothScrollToPosition(container.size() - 1);
+                    } else {
+                        String nextHint = currentQuestion.getNextHint();
+                        if (nextHint != null) {
+                            container.add(nextHint);
+                            adapter.notifyItemInserted(container.size() - 1);
+                            chatView.smoothScrollToPosition(container.size() - 1);
+                        } else {
+                            Toast.makeText(GuessView.this, "No more hints available", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    guessInput.setText("");
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(GuessView.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        backButton.setOnClickListener(v -> finish());
+
     }
 
-//    private void handleGuess() {
-//        String guess = guessInput.getText().toString();
-//        if (currentQuestion.checkAnswer(guess)) {
-//            Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Toast.makeText(this, "Try again.", Toast.LENGTH_SHORT).show();
-//            displayNextHint();
-//        }
-//        guessInput.getText().clear();
-//    }
+    private void showQuestion() {
+        container.add(currentQuestion.getQuestion());
+        container.add(currentQuestion.getNextHint());
+        adapter.notifyItemInserted(container.size() - 1);
+        chatView.smoothScrollToPosition(container.size() - 1);
+    }
 
-    private void start(String languageCode)
+    @Override
+    public void onPause()
     {
-        String[] dynamicHints;
-        if ("vi".equals(languageCode)) {
-            dynamicHints = currentQuestion.g();  // Method to get Vietnamese hints
-        } else {
-            dynamicHints = currentQuestion.getEnglishHints();  // Method to get English hints
+        super.onPause();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        int musicIndex = prefs.getInt(PrefKeyClass.getMusicKey(), 0);
+        if(musicIndex == 0)
+        {
+            startBackgroundMusic();
+        }
+    }
+
+    private void startBackgroundMusic() {
+        if (mediaPlayer == null) {
+            mediaPlayer = MediaPlayer.create(this, R.raw.jingle_bells);
+            mediaPlayer.setLooping(true);
+        }
+
+        if (!mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
         }
     }
 }

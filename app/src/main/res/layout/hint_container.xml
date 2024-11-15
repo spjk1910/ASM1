@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_8sdp"
     android:padding="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -22,17 +22,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
-        android:paddingStart="12dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginLeft="@dimen/_4sdp"
         app:layout_constraintWidth_max = "wrap"
-        android:background="@drawable/background_guess_container"
+        android:background="@drawable/background_hint_container"
         android:padding="@dimen/_12sdp"
        style="@style/text"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toEndOf="@+id/appIcon"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8"/>
+        app:layout_constraintWidth_percent="0.75"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

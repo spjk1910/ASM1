@@ -3,5 +3,6 @@
     <declare-styleable name="CustomView">
         <attr name="middle_bg_colour" format="color" />
         <attr name="secondary_bg_colour" format="color" />
+        <attr name="bg_container_colour" format="color" />
     </declare-styleable>
 </resources>

@@ -3,6 +3,7 @@
     <style name="Theme.ASM1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="middle_bg_colour">@color/light_middle_bg</item>
         <item name="secondary_bg_colour">@color/light_bg_secondary</item>
+        <item name="bg_container_colour">@color/light_bg</item>
     </style>
     <style name="bg_colour"><item name="android:background">@color/light_bg</item></style>
     <style name="bg_middle_colour"><item name="android:background">@color/light_middle_bg</item></style>

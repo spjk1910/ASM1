@@ -19,7 +19,7 @@ public class QuestionClass {
         if (currentHintIndex < hints.length) {
             return hints[currentHintIndex++];
         } else {
-            return "No more hints available.";
+            return null;
         }
     }
 
@@ -31,9 +31,4 @@ public class QuestionClass {
     public String getQuestion() {
         return question;
     }
-
-    public boolean isCorrect() {
-        return isCorrect;
-    }
-
 }
