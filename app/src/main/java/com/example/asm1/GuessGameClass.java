@@ -111,7 +111,7 @@ public class GuessGameClass {
                         "(Bot) Gợi ý 3: Thuật toán khám phá một đỉnh và các đỉnh con của nó trước khi chuyển sang đỉnh tiếp theo"}),
 
                 new QuestionClass("(Bot) Thuật toán sắp xếp nào xây dựng mảng đã sắp xếp một phần tử một lần bằng cách chèn các phần tử vào vị trí đúng trong phần đã sắp xếp?",
-                        "Insertion Sort", new String[]{"(Bot) Gợi ý 1: Thuật toán này hoạt động giống như cách bạn sắp xếp bài tay bài bài bài thẻ bài",
+                        "Insertion Sort", new String[]{"(Bot) Gợi ý 1: Thuật toán này hoạt động giống như cách bạn sắp xếp các thẻ bài",
                         "(Bot) Gợi ý 2: Nó hiệu quả hơn đối với các tập dữ liệu nhỏ hoặc mảng đã gần sắp xếp",
                         "(Bot) Gợi ý 3: Nó có độ phức tạp thời gian trong trường hợp tồi tệ là O(n²)"}),
 

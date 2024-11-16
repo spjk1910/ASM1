@@ -31,4 +31,12 @@ public class QuestionClass {
     public String getQuestion() {
         return question;
     }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCurrentHintIndex(int currentHintIndex) {
+        this.currentHintIndex = currentHintIndex;
+    }
 }

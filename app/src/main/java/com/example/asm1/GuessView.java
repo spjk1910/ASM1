@@ -1,5 +1,6 @@
 package com.example.asm1;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +28,7 @@ public class GuessView extends AppCompatActivity {
     private AppCompatImageView backButton;
     private QuestionClass currentQuestion;
     private GuessGameClass game;
+    private int correctCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +83,46 @@ public class GuessView extends AppCompatActivity {
         game = new GuessGameClass();
         game.startGame(languageCode);
         currentQuestion = game.createQuestion();
-        new android.os.Handler().postDelayed(this::showQuestion, 2000);
+        new android.os.Handler().postDelayed(this::showQuestion, 1000);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog exitDiaglog = new AlertDialog.Builder(GuessView.this).create();
+                exitDiaglog.setCancelable(false);
+                if (languageCode == "en")
+                {
+                    exitDiaglog.setTitle("Alert");
+                    exitDiaglog.setMessage("Your progress will restart if you leave! Do you want to continue go back ?");
+                    exitDiaglog.setButton(AlertDialog.BUTTON_POSITIVE, "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {dialog.dismiss();}
+                            });
+                    exitDiaglog.setButton(AlertDialog.BUTTON_NEGATIVE, "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    container.clear();
+                                    adapter.notifyDataSetChanged();
+                                    finish();}
+                            });
+                } else {
+                    exitDiaglog.setTitle("Cảnh Báo");
+                    exitDiaglog.setMessage("Tiến trình chơi của bạn sẽ bị xóa nếu bạn thoát! Bạn có muốn tiếp tục thoát ?");
+                    exitDiaglog.setButton(AlertDialog.BUTTON_POSITIVE, "Không",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {dialog.dismiss();}
+                            });
+                    exitDiaglog.setButton(AlertDialog.BUTTON_NEGATIVE, "Có",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    container.clear();
+                                    adapter.notifyDataSetChanged();
+                                    finish();}
+                            });
+                }
+                exitDiaglog.show();
+            }
+        });
 
         guessButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +131,7 @@ public class GuessView extends AppCompatActivity {
                     String guess = guessInput.getText().toString().trim();
 
                     if (guess.isEmpty()) {
-                        throw new IllegalArgumentException("Guess cannot be empty");
+                        throw new IllegalArgumentException("Input cannot be empty");
                     }
 
                     container.add(guess);
@@ -98,10 +140,53 @@ public class GuessView extends AppCompatActivity {
 
                     boolean isCorrect = currentQuestion.checkAnswer(guess);
                     if (isCorrect) {
-                        Toast.makeText(GuessView.this, "Correct!", Toast.LENGTH_SHORT).show();
-                        container.add("(Bot) Congratulations! You guessed correctly.");
-                        adapter.notifyItemInserted(container.size() - 1);
-                        chatView.smoothScrollToPosition(container.size() - 1);
+                        correctCount++;
+                        AlertDialog continueDiaglog = new AlertDialog.Builder(GuessView.this).create();
+                        continueDiaglog.setCancelable(false);
+                        if (languageCode == "en")
+                        {
+                            continueDiaglog.setTitle("Correct! Answer is " + currentQuestion.getCorrectAnswer());
+                            continueDiaglog.setMessage("Do you want to continue ?");
+                            continueDiaglog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            container.clear();
+                                            container.add("(Bot) You got " + correctCount + " strike(s) correct answers!");
+                                            adapter.notifyDataSetChanged();
+                                            currentQuestion.setCurrentHintIndex(0);
+                                            game.startGame(languageCode);
+                                            currentQuestion = game.createQuestion();
+                                            continueDiaglog.dismiss();
+                                            new android.os.Handler().postDelayed(GuessView.this::showQuestion, 1000);}
+                                    });
+                            continueDiaglog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            continueDiaglog.dismiss();
+                                            showResult();}
+                                    });
+                        } else {
+                            continueDiaglog.setTitle("Chính xác! Đáp án là " + currentQuestion.getCorrectAnswer());
+                            continueDiaglog.setMessage("Bạn có muốn tiếp tục ?");
+                            continueDiaglog.setButton(AlertDialog.BUTTON_POSITIVE, "Có",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            container.clear();
+                                            container.add("(Bot) Bạn đạt " + correctCount + " câu trả lời đúng!");
+                                            adapter.notifyDataSetChanged();
+                                            game.startGame(languageCode);
+                                            currentQuestion = game.createQuestion();
+                                            continueDiaglog.dismiss();
+                                            new android.os.Handler().postDelayed(GuessView.this::showQuestion, 1000);}
+                                    });
+                            continueDiaglog.setButton(AlertDialog.BUTTON_NEGATIVE, "Không",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            continueDiaglog.dismiss();
+                                            showResult();}
+                                    });
+                        }
+                        continueDiaglog.show();
                     } else {
                         String nextHint = currentQuestion.getNextHint();
                         if (nextHint != null) {
@@ -109,7 +194,17 @@ public class GuessView extends AppCompatActivity {
                             adapter.notifyItemInserted(container.size() - 1);
                             chatView.smoothScrollToPosition(container.size() - 1);
                         } else {
-                            Toast.makeText(GuessView.this, "No more hints available", Toast.LENGTH_SHORT).show();
+                            if (languageCode == "en") {
+                                container.add("(Bot) No more hints available! You lose!");
+                                container.add("(Bot) The answer is " + currentQuestion.getCorrectAnswer());
+                            }
+                            else {
+                                container.add("(Bot) Không còn gợi ý nữa! Bạn thua!");
+                                container.add("(Bot) Đáp án là " + currentQuestion.getCorrectAnswer());
+                            }
+                            adapter.notifyItemInserted(container.size() - 1);
+                            chatView.smoothScrollToPosition(container.size() - 1);
+                            new android.os.Handler().postDelayed(GuessView.this::showResult, 1000);
                         }
                     }
                     guessInput.setText("");
@@ -118,9 +213,64 @@ public class GuessView extends AppCompatActivity {
                 }
             }
         });
+    }
 
-        backButton.setOnClickListener(v -> finish());
-
+    private void showResult() {
+        SharedPreferences prefs = getSharedPreferences(PrefKeyClass.getPrefsName(), MODE_PRIVATE);
+        int languageIndex = prefs.getInt(PrefKeyClass.getLanguageKey(), 0);
+        String languageCode = (languageIndex == 1) ? "vi" : "en";
+        AlertDialog resultDialog = new AlertDialog.Builder(GuessView.this).create();
+        resultDialog.setCancelable(false);
+        String result = "";
+        if (languageCode == "en") {
+            resultDialog.setTitle("Result");
+            result += "You got " + correctCount + " out of 15 questions correct!\n";
+            if (correctCount >= 1 && correctCount < 5)
+            {
+                result += "You need to improve your knowledge!";
+            } else if (correctCount >= 5 && correctCount < 10)
+            {
+                result += "You are good! Try to get more!";
+            } else if (correctCount >= 10 && correctCount < 15) {
+                result += "You are very smart! Keep it up!";
+            } else if (correctCount >= 15) {
+                result += "You are the best! Congratulations!";
+            } else {
+                result += "You are the worst! Try again!";
+            }
+            resultDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Back to menu",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            container.clear();
+                            adapter.notifyDataSetChanged();
+                            finish();}
+                    });
+        } else {
+            resultDialog.setTitle("Kết Quả");
+            result += "Bạn đúng " + correctCount + " trên 15 câu hỏi!\n";
+            if (correctCount >= 1 && correctCount < 5)
+            {
+                result += "Bạn cần cải thiện kiến thức của mình!";
+            } else if (correctCount >= 5 && correctCount < 10)
+            {
+                result += "Bạn làm tốt rồi! Cố gắng đạt được nhiều hơn!";
+            } else if (correctCount >= 10 && correctCount < 15) {
+                result += "Bạn rất thông minh! Tiếp tục phát huy!";
+            } else if (correctCount >= 15) {
+                result += "Bạn là người giỏi nhất! Chúc mừng bạn!";
+            } else {
+                result += "Bạn thật tệ! Hãy thử lại!";
+            }
+            resultDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Quay về",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            container.clear();
+                            adapter.notifyDataSetChanged();
+                            finish();}
+                    });
+        }
+        resultDialog.setMessage(result);
+        resultDialog.show();
     }
 
     private void showQuestion() {
