@@ -4,9 +4,9 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -215,7 +215,7 @@ public class GuessView extends AppCompatActivity {
                     }
                     guessInput.setText("");
                 } catch (IllegalArgumentException e) {
-                    Toast.makeText(GuessView.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d("Error", e.getMessage());
                 }
             }
         });
