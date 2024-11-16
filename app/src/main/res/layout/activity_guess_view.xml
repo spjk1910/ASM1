@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     style="@style/bg_colour"
     android:fitsSystemWindows="true"
-    tools:context=".GuessView">
+    tools:context=".ViewController.GuessView">
 
     <View
         android:id="@+id/showingGuess"

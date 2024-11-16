@@ -1,17 +1,19 @@
-package com.example.asm1;
+package com.example.asm1.ViewController;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.asm1.ProjectClass.PrefKeyClass;
+import com.example.asm1.R;
 
 import java.util.Locale;
 import java.util.Objects;

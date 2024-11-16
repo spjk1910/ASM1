@@ -1,4 +1,4 @@
-package com.example.asm1;
+package com.example.asm1.ProjectClass;
 
 import java.util.Random;
 

@@ -9,7 +9,7 @@
     android:animateLayoutChanges="true"
     style="@style/bg_colour"
     android:orientation="vertical"
-    tools:context=".WelcomeScreen">
+    tools:context=".ViewController.WelcomeScreen">
 
     <FrameLayout
         android:id="@+id/app_icon"

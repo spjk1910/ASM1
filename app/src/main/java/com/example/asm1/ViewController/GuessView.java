@@ -1,4 +1,4 @@
-package com.example.asm1;
+package com.example.asm1.ViewController;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -13,6 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.asm1.ProjectClass.Adapter;
+import com.example.asm1.ProjectClass.GuessGameClass;
+import com.example.asm1.ProjectClass.PrefKeyClass;
+import com.example.asm1.ProjectClass.QuestionClass;
+import com.example.asm1.R;
 
 import java.util.ArrayList;
 import java.util.List;

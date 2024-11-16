@@ -1,4 +1,4 @@
-package com.example.asm1;
+package com.example.asm1.ProjectClass;
 
 public class QuestionClass {
     private String question;
